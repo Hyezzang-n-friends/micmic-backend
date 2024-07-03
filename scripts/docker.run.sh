@@ -1,0 +1,1 @@
+sudo docker run -p 7890:7890 micmic:1.0

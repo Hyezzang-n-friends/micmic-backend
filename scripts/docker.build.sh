@@ -1,0 +1,1 @@
+sudo docker build -t micmic:1.0 .
