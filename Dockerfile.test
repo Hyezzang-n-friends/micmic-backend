@@ -1,0 +1,25 @@
+FROM python:3.10.0-buster as builder
+
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get install -y pipenv \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY Pipfile Pipfile.lock /app/
+
+RUN pipenv install --system --deploy
+
+FROM python:3.10.0-slim
+
+WORKDIR /app
+
+COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+COPY . /app
+
+EXPOSE 7890
+
+ENTRYPOINT ["python3"]
+CMD ["a.py"]
