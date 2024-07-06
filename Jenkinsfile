@@ -1,6 +1,9 @@
 node{
     stage('Clone repository'){
-        git credentialsId: "github_access_token", url: "https://github.com/Hyezzang-n-friends/micmic-backend.git"
+        steps{
+            git branch: 'main', git credentialsId: "github_access_token", url: "https://github.com/Hyezzang-n-friends/micmic-backend.git"
+        }
+
     }
 
     stage('Build image'){
