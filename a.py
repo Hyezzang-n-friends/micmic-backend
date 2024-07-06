@@ -10,7 +10,7 @@ ns_conf = api.namespace('hello', description='Conference operations')
 class HelloController(Resource):
     def get(self):
         """
-            Edit4 returns a list of conferences
+            Edit76 returns a list of conferences
         """
 
         return make_response(jsonify({"status": "ok", "data": None}, 200))
