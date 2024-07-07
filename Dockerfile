@@ -10,4 +10,4 @@ COPY . /app
 
 RUN pipenv install --system --deploy
 ENTRYPOINT ["python3"]
-CMD ["debug_micmic_backend.py
+CMD ["debug_micmic_backend.py"]
