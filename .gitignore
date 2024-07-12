@@ -2,6 +2,7 @@
 .idea
 .vscode
 .envrc
+keys/
 ca.pem
 *.pem
 
