@@ -3,4 +3,13 @@ services:
      image: hyezzang/micmic-backend:v1.0
      ports:
       - "7890:7890"
+     env_file:
+       - .env
+     environment:
+       STAGE: '${STAGE}'
+       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+       MYSQL_HOST: "${MYSQL_HOST}"
+       MYSQL_DB: '${MYSQL_DB}'
+       MYSQL_PORT: '${MYSQL_PORT}'
+       MYSQL_USER: '${MYSQL_USER}'
      restart: always
