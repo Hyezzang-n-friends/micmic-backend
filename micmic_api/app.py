@@ -18,7 +18,8 @@ def create_app():
 
 def register_namespaces(api: Api) -> None:
     from micmic_api.hello.a import hello_ns
-    from micmic_api.auth.a import auth_ns
+    from micmic_api.auth import auth_ns
+    import micmic_api.auth.controller.join
     ns_confs = [hello_ns, auth_ns]
     for ns_conf in ns_confs:
         api.add_namespace(ns_conf)
@@ -37,13 +38,11 @@ def initialize():
         db_host=config.MYSQL_HOST,
         db_port=config.MYSQL_PORT,
     )
-    conn = db.connect()
-    cursor = conn.cursor()
-    sql = """
-        SHOW DATABASES;
-    """
-    cursor.execute(sql)
-    row = cursor.fetchone()
-    print(row)
-
-    conn.close()
+    # g.conn = db.connect()
+    # cursor = g.conn.cursor()
+    # sql = """
+    #     SHOW DATABASES;
+    # """
+    # cursor.execute(sql)
+    # row = cursor.fetchone()
+    # print(row)
