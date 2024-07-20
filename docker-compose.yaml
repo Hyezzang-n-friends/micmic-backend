@@ -15,6 +15,16 @@ services:
      restart: always
      networks:
        - micmic_backend
+  nginx:
+    image: nginx:1.27.0
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - micmic-backend
+    networks:
+      - micmic_backend
 networks:
   micmic_backend:
     external: true
