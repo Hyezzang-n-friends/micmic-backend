@@ -1,6 +1,7 @@
 services:
   micmic-backend:
-     image: hyezzang/micmic-backend:v1.0
+     build:
+       dockerfile: Dockerfile
      ports:
       - "7890:7890"
      env_file:
@@ -8,8 +9,13 @@ services:
      environment:
        STAGE: '${STAGE}'
        MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
-       MYSQL_HOST: "${MYSQL_HOST}"
+       MYSQL_HOST: '${MYSQL_HOST}'
        MYSQL_DB: '${MYSQL_DB}'
        MYSQL_PORT: '${MYSQL_PORT}'
        MYSQL_USER: '${MYSQL_USER}'
      restart: always
+     networks:
+       - micmic_backend
+networks:
+  micmic_backend:
+    external: true
