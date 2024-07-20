@@ -40,7 +40,7 @@ def initialize():
     conn = db.connect()
     cursor = conn.cursor()
     sql = """
-        SELECT * FROM users;
+        SHOW DATABASES;
     """
     cursor.execute(sql)
     row = cursor.fetchone()

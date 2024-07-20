@@ -1,7 +1,6 @@
 services:
   micmic-backend:
-     build:
-       dockerfile: Dockerfile
+     image: hyezzang/micmic-backend:v1.0
      ports:
       - "7890:7890"
      env_file:
