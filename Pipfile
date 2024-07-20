@@ -10,6 +10,7 @@ gunicorn = "*"
 mysql-connector-python = "*"
 python-dotenv = "*"
 sshtunnel = "*"
+dataclasses-json = "*"
 
 [dev-packages]
 
