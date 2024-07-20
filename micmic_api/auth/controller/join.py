@@ -1,11 +1,16 @@
 from flask import request, make_response
-from flask_restx import Resource
+from flask_restx import Resource, fields
 
 from common_lib.models.response import MicmicBaseResponse
 from micmic_api.auth import auth_ns
 from micmic_api.auth.model.join import MicmicJoinRequest
 from micmic_api.auth.model.user import MicmicUserInfo
 from micmic_api.auth.service.join import MicmicJoinService
+
+join_request_model = auth_ns.model('MicmicJoinRequest', {
+    'email': fields.String(required=True, description='User email address'),
+    'name': fields.String(required=True, description='User name')
+})
 
 
 @auth_ns.route("/join")
@@ -14,6 +19,7 @@ class MicmicJoinController(Resource):
         super().__init__(*args, **kwargs)
         self.service = MicmicJoinService()
 
+    @auth_ns.expect(join_request_model)
     def post(self):
         body = request.get_json(force=True, silent=True)
         query = MicmicJoinRequest(**body)
